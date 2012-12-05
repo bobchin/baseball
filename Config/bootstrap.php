@@ -109,8 +109,9 @@ CakeLog::config('error', array(
 
 
 App::build(array(
-	'Plugin' => array(ROOT . DS . 'plugins' . DS),
-	'Vendor' => array(ROOT . DS . 'vendors' . DS),
+	'Plugin' => array(dirname(dirname(APP)) . DS . 'plugins' . DS),
+	'Vendor' => array(dirname(dirname(APP)) . DS . 'vendors' . DS),
 ));
-CakePlugin::load('DebugKit');
+//CakePlugin::load('DebugKit');
 App::uses('SimpleHtmlDom/simple_html_dom', 'Vendor');
+

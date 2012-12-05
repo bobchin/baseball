@@ -137,53 +137,69 @@ class NPB extends AppModel
 	/*
 	 * チーム名の短縮名を取得
 	 */
-	public function getTeam($team = null)
+	public function getTeam($team = null, $long = false)
 	{
 		$teams = array(
-			self::$HAWKS,
-			self::$FIGHTERS,
-			self::$LIONS,
-			self::$BUFFALOS,
-			self::$EAGLES,
-			self::$MARINES,
+			self::$HAWKS    => 'Hawks',
+			self::$FIGHTERS => 'Fighters',
+			self::$LIONS    => 'Lions',
+			self::$BUFFALOS => 'Buffalos',
+			self::$EAGLES   => 'Eagles',
+			self::$MARINES  => 'Marines',
 
-			self::$DRAGONS,
-			self::$SWALLOWS,
-			self::$GIANTS,
-			self::$TIGARS,
-			self::$CARPS,
-			self::$BAYSTARS,
+			self::$DRAGONS  => 'Dragons',
+			self::$SWALLOWS => 'Swallows',
+			self::$GIANTS   => 'Giants',
+			self::$TIGARS   => 'Tigars',
+			self::$CARPS    => 'Carps',
+			self::$BAYSTARS => 'Baystars',
 		);
 
 		if (!is_string($team)) {
-			return $teams;
+			if ($long) {
+				return array_values($teams);
+			} else {
+				return array_keys($teams);
+			}
 		}
 
-		if (!in_array($team, $teams)) {
+		if (!isset($teams[$team])) {
 			$team = self::$HAWKS;
 		}
-		return $team;
+		if ($long) {
+			return $teams[$team];
+		} else {
+			return $team;
+		}
 	}
 
 	/**
 	 * 種類を取得
 	 */
-	public function getType($type = null)
+	public function getType($type = null, $long = false)
 	{
 		$types = array(
-			self::$BATTER, 
-			self::$PITCHER, 
-			self::$DEFENCE,
+			self::$BATTER  => 'Batter', 
+			self::$PITCHER => 'Pitcher', 
+			self::$DEFENCE => 'Defence',
 		);
 
 		if (!is_string($type)) {
-			return $types;
+			if ($long) {
+				return array_values($types);
+			} else {
+				return array_keys($types);
+			}
 		}
 
-		if (!in_array($type, $types)) {
+		if (!isset($types[$type])) {
 			$type = self::$BATTER;
 		}
-		return 	$type;
+		if ($long) {
+			return $types[$type];
+		} else {
+			return $type;
+		}
 	}
 
 	/**
@@ -306,6 +322,7 @@ class NPB extends AppModel
 			$player['team'] = $team;
 			$result[] = array($model => $player);
 		}
+		$parser->clear();
 		return $result;
 	}
 
