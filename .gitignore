@@ -3,37 +3,48 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+database.php
 
 # Cake TMP Dirs
-/app/tmp/*
-!/app/tmp/
+tmp/*
+!tmp/
 
-/app/tmp/cache/*
-!/app/tmp/cache/
-!/app/tmp/cache/empty
+tmp/cache/*
+!tmp/cache/
+!tmp/cache/empty
 
-/app/tmp/cache/models/*
-!/app/tmp/cache/models/
-!/app/tmp/cache/models/empty
+tmp/cache/models/*
+!tmp/cache/models/
+!tmp/cache/models/empty
 
-/app/tmp/cache/persistent/*
-!/app/tmp/cache/persistent/
-!/app/tmp/cache/persistent/empty
+tmp/cache/persistent/*
+!tmp/cache/persistent/
+!tmp/cache/persistent/empty
 
-/app/tmp/cache/views/*
-!/app/tmp/cache/views/
-!/app/tmp/cache/views/empty
+tmp/cache/views/*
+!tmp/cache/views/
+!tmp/cache/views/empty
 
-/app/tmp/logs/*
-!/app/tmp/logs/
-!/app/tmp/logs/empty
+tmp/logs/*
+!tmp/logs/
+!tmp/logs/empty
 
-/app/tmp/sessions/*
-!/app/tmp/sessions/
-!/app/tmp/sessions/empty
+tmp/sessions/*
+!tmp/sessions/
+!tmp/sessions/empty
 
-/app/tmp/tests/*
-!/app/tmp/tests/
-!/app/tmp/tests/empty
+tmp/tests/*
+!tmp/tests/
+!tmp/tests/empty
+
+# Cake Plugin, Vendor
+Plugins
+!Plugins/
+
+Vendor/*
+!Vendor/
+
+
+
 
 
