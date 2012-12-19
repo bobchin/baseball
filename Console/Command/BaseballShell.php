@@ -2,36 +2,38 @@
 
 class BaseballShell extends AppShell
 {
-	public $uses = array('NPB');
+	public $uses = array('Npb');
 
 	public function main()
 	{
 		set_time_limit(300);
 
-		$teams = $this->NPB->getTeam();
-		$types = $this->NPB->getType();
+		$teams = $this->Npb->getTeam();
+		$types = $this->Npb->getType();
 
-		$this->hr();
-		$this->out('更新開始');
-		$this->hr();
+        $this->hr();
+        $start = new DateTime();
+		$this->out('更新開始' . date('Y-m-d H:i:s'));
 
 		foreach ($teams as $team) {
 			foreach ($types as $type) {
-				$teamName = $this->NPB->getTeam($team, true);
-				$typeName = $this->NPB->getType($type, true);
+				$teamName = $this->Npb->getTeam($team, true);
+				$typeName = $this->Npb->getType($type, true);
 				$this->out(sprintf('%s の %s を取得開始', $teamName, $typeName));
 
-				if ($this->NPB->savePlayers($team, $type) === false) {
+				if ($this->Npb->savePlayers($team, $type) === false) {
 					$this->out('更新に失敗しました。');
 				} else {
-					$this->out('更新成功');
+					//$this->out('更新成功');
 				}
-				$this->hr();
+				//$this->hr();
 			}
 		}
 
-		$this->hr();
-		$this->out('更新終了！');
+        $this->out('更新終了！' . date('Y-m-d H:i:s'));
+        $end = new DateTime();
+        $diff = date_diff($start, $end);
+        $this->out(sprintf('%s', $diff->format('%s sec.')));
 		$this->hr();
 	}
 

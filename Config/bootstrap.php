@@ -112,6 +112,7 @@ App::build(array(
 	'Plugin' => array(dirname(dirname(APP)) . DS . 'plugins' . DS),
 	'Vendor' => array(dirname(dirname(APP)) . DS . 'vendors' . DS),
 ));
+
 //CakePlugin::load('DebugKit');
 App::uses('SimpleHtmlDom/simple_html_dom', 'Vendor');
 
